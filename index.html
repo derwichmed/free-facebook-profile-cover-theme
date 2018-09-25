@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="jquery.js"></script>
+        <script>
+            $(function (){
+               $('.photo_profile').mouseenter(function (){
+                  $(this).find('>label:first-child').css('visibility','visible'); 
+               });
+               $('.photo_profile').mouseleave(function (){
+                  $(this).find('>label:first-child').css('visibility','hidden'); 
+               });
+            });
+            function displayImg(input){
+                img_class = $(input).attr('img_class');
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('img[class='+img_class+']').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        </script>
+    </head>
+    <body  class="container-fluid" style="
+          background-color: #ececec;
+          ">
+        <header class="row justify-content-center">
+            <div class="col-lg-8" style="
+                 height: 350px;
+                 background-color: white;
+                 border: #d5d5d5 1px solid;
+                 padding: 0px
+                 ">
+                <img class="img_cover" src="14264017_1229287370468511_6240751722243516440_n.jpg" style="
+                     width: 100%;
+                     height: 90%;
+                     "/>
+                <div class="photo_profile" style="
+                     height: 120px;
+                     width: 150px;
+                     border-style: solid;
+                     position: absolute;
+                     bottom: 0;
+                     margin-left: 20px;
+                     margin-bottom: 15px;
+                     background-color: white;
+                     border: #e2e2e2 1px solid;
+                     padding: 5px;
+                     border-radius: 1px;
+                     background-color: #ececec
+                     ">
+                    
+                    <label style="
+                         position: absolute;
+                         width: 90%;
+                         height: 30px;
+                         margin-top: 30px;
+                         cursor: pointer;
+                         visibility: hidden
+                         ">
+                        <input type="file" style="display: none" img_class="img_profile" onchange="displayImg(this)"/>
+                        <img   src="3901.png" style="
+                              width: 40px;
+                              height: 40px;
+                              margin-left: 50px
+                              ">
+                        <p style="color: white;text-align: center">
+                            Update photo
+                        </p>
+                    </label>
+                    <img class="img_profile" src="Cristiano-Ronaldo.jpg" style="
+                         width: 100%;
+                         height: 100%
+                         "/>
+                </div>
+                <label style="
+                     width: 200px;
+                     height: 40px;
+                     position: absolute;
+                     top: 10px;
+                     left: 20px;
+                     background-color: black;
+                     border: white 1px solid;
+                     padding-top: 5px;
+                     padding-left: 10px;
+                     cursor: pointer
+                     ">
+                    <input type="file" style="display: none" img_class="img_cover" onchange="displayImg(this)"/>
+                    <img src="3901.png" style="
+                         height: 20px;
+                         width: 35px;
+                         "/>
+                    <span style="
+                          color: white
+                          ">
+                        Update Cover Photo
+                    </span>
+                </label>
+            </div>
+        </header>
+    </body>
+</html>
